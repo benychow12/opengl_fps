@@ -14,7 +14,7 @@ public:
     ~SimpleRender();
 
     // Renders a defined 3d object
-    void Draw3D(glm::vec3 position);
+    void Draw3D(glm::vec3 position, glm::mat4 playerview);
 private:
     // Render state
     Shader shader;

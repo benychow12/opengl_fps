@@ -74,12 +74,12 @@ clean: CMakeFiles/Doomu.dir/clean
 CMakeFiles/Doomu.dir/all:
 	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/depend
 	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target Doomu"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target Doomu"
 .PHONY : CMakeFiles/Doomu.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Doomu.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mayajama/Projects/openGL/doomu/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mayajama/Projects/openGL/doomu/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Doomu.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mayajama/Projects/openGL/doomu/CMakeFiles 0
 .PHONY : CMakeFiles/Doomu.dir/rule

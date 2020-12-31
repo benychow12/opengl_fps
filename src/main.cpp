@@ -20,6 +20,50 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+    // debug
+    // close application when esc is pressed
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+    {
+        glfwSetWindowShouldClose(window, true);
+    }
+
+    // register possible keys
+    if (key >= 0 && key < 1024)
+    {
+        if (action == GLFW_PRESS)
+        {
+            Doomu.Keys[key] = true;
+        }
+        else if (action == GLFW_RELEASE)
+        {
+            Doomu.Keys[key] = false;
+        }
+    }
+}
+
+void mouse_callback(GLFWwindow *window, double mouse_xpos, double mouse_ypos)
+{
+    // debug
+    std::cout << "mouse callback" << std::endl;
+
+    if (Doomu.firstMouse)
+    {
+        // debug
+        std::cout << "First mouse" << std::endl;
+        Doomu.cam_lastX = mouse_xpos;
+        Doomu.cam_lastY = mouse_ypos;
+        Doomu.firstMouse = false;
+    }
+
+    Doomu.cam_xoffset = mouse_xpos - Doomu.cam_lastX;
+    Doomu.cam_yoffset = Doomu.cam_lastY - mouse_ypos;
+    
+    Doomu.cam_lastX = mouse_xpos;
+    Doomu.cam_lastY = mouse_ypos;
+}
+
 int main(int argc, char* argv[])
 {
     // initial setup glfw
@@ -41,9 +85,12 @@ int main(int argc, char* argv[])
     }
 
     // Callbacks for viewport and kb
+    glfwSetKeyCallback(window, key_callback);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glfwSetCursorPosCallback(window, mouse_callback);
 
     // OpenGL Configuration
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -62,9 +109,6 @@ int main(int argc, char* argv[])
         float currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
-
-        // debug
-        std::cout << "Delta time is..." << deltaTime << std::endl;
 
         glfwPollEvents();
 

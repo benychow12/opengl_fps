@@ -1,4 +1,3 @@
-#include <iostream>
 #include "c_3drender.h"
 
 SimpleRender::SimpleRender(Shader &shader)
@@ -14,7 +13,7 @@ SimpleRender::~SimpleRender()
     glDeleteVertexArrays(1, &this->quadVAO);
 }
 
-void SimpleRender::Draw3D(glm::vec3 position)
+void SimpleRender::Draw3D(glm::vec3 position, glm::mat4 playerview)
 {
     // prepare the transforms
     this->shader.Use();
@@ -22,7 +21,7 @@ void SimpleRender::Draw3D(glm::vec3 position)
 
     // Matrix multiplication are in reverse order:
     // 1. scale, 2. rotate, 3. translate
-    // model = glm::translate(model, glm::vec3(position));
+    // model = glm::translate(model, glm::vec3(0.0f, position.x, position.y));
     model = glm::rotate(model, glm::radians(position.x), glm::vec3(1.0f, 0.3f, 0.5f));
 
     // set the shader vertex shader
@@ -30,10 +29,9 @@ void SimpleRender::Draw3D(glm::vec3 position)
 
     // Debug
     // 3d projection stuff
-    glm::mat4 view = glm::mat4(1.0f);
+    glm::mat4 view = playerview;
     glm::mat4 projection = glm::mat4(1.0f);
     projection = glm::perspective(glm::radians(45.0f), (float)1.0, 0.1f, 100.0f);
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
     this->shader.SetMatrix4("view", view);
     this->shader.SetMatrix4("projection", projection);
 
@@ -46,9 +44,6 @@ void SimpleRender::Draw3D(glm::vec3 position)
 
 void SimpleRender::initRenderData()
 {
-    // debug 
-    std::cout << "initRenderData" << std::endl;
-
     // configure VAO/VBO
     unsigned int VBO;
 

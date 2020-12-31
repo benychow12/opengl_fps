@@ -150,6 +150,33 @@ src/c_3drender.cpp.s:
 	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_3drender.cpp.s
 .PHONY : src/c_3drender.cpp.s
 
+src/c_camera.o: src/c_camera.cpp.o
+
+.PHONY : src/c_camera.o
+
+# target to build an object file
+src/c_camera.cpp.o:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_camera.cpp.o
+.PHONY : src/c_camera.cpp.o
+
+src/c_camera.i: src/c_camera.cpp.i
+
+.PHONY : src/c_camera.i
+
+# target to preprocess a source file
+src/c_camera.cpp.i:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_camera.cpp.i
+.PHONY : src/c_camera.cpp.i
+
+src/c_camera.s: src/c_camera.cpp.s
+
+.PHONY : src/c_camera.s
+
+# target to generate assembly for a file
+src/c_camera.cpp.s:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_camera.cpp.s
+.PHONY : src/c_camera.cpp.s
+
 src/c_game.o: src/c_game.cpp.o
 
 .PHONY : src/c_game.o
@@ -297,6 +324,9 @@ help:
 	@echo "... src/c_3drender.o"
 	@echo "... src/c_3drender.i"
 	@echo "... src/c_3drender.s"
+	@echo "... src/c_camera.o"
+	@echo "... src/c_camera.i"
+	@echo "... src/c_camera.s"
 	@echo "... src/c_game.o"
 	@echo "... src/c_game.i"
 	@echo "... src/c_game.s"

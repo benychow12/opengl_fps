@@ -16,7 +16,11 @@ class Game
 public:
     // game state
     Gamestate State;
+    bool Keys[1024];
     unsigned int Width, Height;
+    // camera
+    float cam_lastX, cam_lastY, cam_xoffset, cam_yoffset;
+    bool firstMouse;
 
     Game(unsigned int width, unsigned int height);
     ~Game();
