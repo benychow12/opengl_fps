@@ -1,0 +1,6 @@
+1/31/2021
+- Collision
+-- AABB - AABB collision. 
+-- [] Get object size in draw3d render
+-- [] return player position from camera class
+--- possibly can use hard coded player pill size?

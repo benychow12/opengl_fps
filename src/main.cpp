@@ -46,7 +46,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 void mouse_callback(GLFWwindow *window, double mouse_xpos, double mouse_ypos)
 {
     // debug
-    std::cout << "mouse callback" << std::endl;
+    // std::cout << "mouse callback" << std::endl;
 
     if (Doomu.firstMouse)
     {

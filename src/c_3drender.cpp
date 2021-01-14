@@ -21,8 +21,8 @@ void SimpleRender::Draw3D(glm::vec3 position, glm::mat4 playerview)
 
     // Matrix multiplication are in reverse order:
     // 1. scale, 2. rotate, 3. translate
-    // model = glm::translate(model, glm::vec3(0.0f, position.x, position.y));
-    model = glm::rotate(model, glm::radians(position.x), glm::vec3(1.0f, 0.3f, 0.5f));
+    model = glm::translate(model, glm::vec3(position.x, position.y, position.z));
+    // model = glm::rotate(model, glm::radians(position.x), glm::vec3(1.0f, 0.3f, 0.5f));
 
     // set the shader vertex shader
     this->shader.SetMatrix4("model", model);

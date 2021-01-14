@@ -47,22 +47,22 @@ void Game::ProcessInput(float dt)
     {
         if (this->Keys[GLFW_KEY_W])
         {
-            std:: cout << "W pressed..." << std::endl;
+            // std:: cout << "W pressed..." << std::endl;
             PlayerCamera.ProcessKeyboardCamera(FORWARD, dt);            
         }
         if (this->Keys[GLFW_KEY_S])
         {
-            std::cout << "S pressed..." << std::endl;
+            // std::cout << "S pressed..." << std::endl;
             PlayerCamera.ProcessKeyboardCamera(BACKWARD, dt);            
         }
         if (this->Keys[GLFW_KEY_A])
         {
-            std::cout << "A pressed..." << std::endl;
+            // std::cout << "A pressed..." << std::endl;
             PlayerCamera.ProcessKeyboardCamera(LEFT, dt);            
         }
         if (this->Keys[GLFW_KEY_D])
         {
-            std::cout << "D pressed..." << std::endl;
+            // std::cout << "D pressed..." << std::endl;
             PlayerCamera.ProcessKeyboardCamera(RIGHT, dt);            
         }
 
@@ -70,6 +70,14 @@ void Game::ProcessInput(float dt)
         // reset the offsets to avoid drifting
         cam_xoffset = 0.0f;
         cam_yoffset = 0.0f;
+
+        // debug
+        glm::vec3 PlayerPos = PlayerCamera.GetPosition();
+        std::cout << "Player Position..." << std::endl;
+        std::cout << PlayerPos.x << std::endl;
+        std::cout << PlayerPos.y << std::endl;
+        std::cout << PlayerPos.z << std::endl;
+
     }
 
 }
@@ -83,5 +91,6 @@ void Game::Render(float dt)
 {
     // test draw
     glm::mat4 view = PlayerCamera.GetViewMatrix();
-    Renderer->Draw3D(glm::vec3(glfwGetTime() * 10, 0.0f, 0.0f), view);
+    Renderer->Draw3D(glm::vec3(0.0f, 0.0f, 0.0f), view);
+    Renderer->Draw3D(glm::vec3(5.0f, 0.0f, 0.0f), view);
 }
