@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/mayajama/Projects/openGL/doomu/src/c_camera.cpp
-c_camera.h
-/home/mayajama/Projects/openGL/doomu/src/c_camera.h
-
 /home/mayajama/Projects/openGL/doomu/src/c_game.cpp
 iostream
 -
@@ -21,8 +17,12 @@ c_3drender.h
 /home/mayajama/Projects/openGL/doomu/src/c_3drender.h
 c_camera.h
 /home/mayajama/Projects/openGL/doomu/src/c_camera.h
+c_gameobject.h
+-
 glm/gtx/string_cast.hpp
 /home/mayajama/Projects/openGL/doomu/src/glm/gtx/string_cast.hpp
+vector
+-
 
 include/KHR/khrplatform.h
 stdint.h
@@ -56,6 +56,14 @@ include/c_game.h
 glad/glad.h
 -
 GLFW/glfw3.h
+-
+
+include/c_gameobject.h
+glad/glad.h
+-
+glm/glm.hpp
+-
+c_3drender.h
 -
 
 include/c_resmanager.h

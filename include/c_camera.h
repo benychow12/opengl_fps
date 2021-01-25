@@ -8,10 +8,10 @@
 #include <vector>
 
 enum Camera_Movement {
-    FORWARD,
-    BACKWARD,
-    LEFT,
-    RIGHT
+    CAM_FORWARD,
+    CAM_BACKWARD,
+    CAM_LEFT,
+    CAM_RIGHT
 };
 
 class Camera

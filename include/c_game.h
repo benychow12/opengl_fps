@@ -10,6 +10,19 @@ enum Gamestate
     GAME_ACTIVE
 };
 
+// Game directions for collision
+enum Direction
+{
+    COL_UP, 
+    COL_RIGHT, 
+    COL_DOWN,
+    COL_LEFT 
+};
+
+// Collision typedef that represents collision data
+// <collision?, what direction?>
+// typedef std::tuple<bool, Direction, glm::vec2> Collision;
+
 // Game class holds all game-related state and functionality
 class Game
 {
@@ -33,6 +46,8 @@ public:
     void Update(float dt);
     void Render(float dt);
 
+    // Collision
+    void DoCollisions();
     // resets
 };
 

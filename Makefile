@@ -204,6 +204,33 @@ src/c_game.cpp.s:
 	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_game.cpp.s
 .PHONY : src/c_game.cpp.s
 
+src/c_gameobject.o: src/c_gameobject.cpp.o
+
+.PHONY : src/c_gameobject.o
+
+# target to build an object file
+src/c_gameobject.cpp.o:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o
+.PHONY : src/c_gameobject.cpp.o
+
+src/c_gameobject.i: src/c_gameobject.cpp.i
+
+.PHONY : src/c_gameobject.i
+
+# target to preprocess a source file
+src/c_gameobject.cpp.i:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_gameobject.cpp.i
+.PHONY : src/c_gameobject.cpp.i
+
+src/c_gameobject.s: src/c_gameobject.cpp.s
+
+.PHONY : src/c_gameobject.s
+
+# target to generate assembly for a file
+src/c_gameobject.cpp.s:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_gameobject.cpp.s
+.PHONY : src/c_gameobject.cpp.s
+
 src/c_resmanager.o: src/c_resmanager.cpp.o
 
 .PHONY : src/c_resmanager.o
@@ -330,6 +357,9 @@ help:
 	@echo "... src/c_game.o"
 	@echo "... src/c_game.i"
 	@echo "... src/c_game.s"
+	@echo "... src/c_gameobject.o"
+	@echo "... src/c_gameobject.i"
+	@echo "... src/c_gameobject.s"
 	@echo "... src/c_resmanager.o"
 	@echo "... src/c_resmanager.i"
 	@echo "... src/c_resmanager.s"

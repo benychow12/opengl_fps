@@ -96,9 +96,22 @@ CMakeFiles/Doomu.dir/src/c_game.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Doomu.dir/src/c_game.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mayajama/Projects/openGL/doomu/src/c_game.cpp -o CMakeFiles/Doomu.dir/src/c_game.cpp.s
 
+CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o: CMakeFiles/Doomu.dir/flags.make
+CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o: src/c_gameobject.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o -c /home/mayajama/Projects/openGL/doomu/src/c_gameobject.cpp
+
+CMakeFiles/Doomu.dir/src/c_gameobject.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Doomu.dir/src/c_gameobject.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mayajama/Projects/openGL/doomu/src/c_gameobject.cpp > CMakeFiles/Doomu.dir/src/c_gameobject.cpp.i
+
+CMakeFiles/Doomu.dir/src/c_gameobject.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Doomu.dir/src/c_gameobject.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mayajama/Projects/openGL/doomu/src/c_gameobject.cpp -o CMakeFiles/Doomu.dir/src/c_gameobject.cpp.s
+
 CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o: CMakeFiles/Doomu.dir/flags.make
 CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o: src/c_resmanager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o -c /home/mayajama/Projects/openGL/doomu/src/c_resmanager.cpp
 
 CMakeFiles/Doomu.dir/src/c_resmanager.cpp.i: cmake_force
@@ -111,7 +124,7 @@ CMakeFiles/Doomu.dir/src/c_resmanager.cpp.s: cmake_force
 
 CMakeFiles/Doomu.dir/src/c_shader.cpp.o: CMakeFiles/Doomu.dir/flags.make
 CMakeFiles/Doomu.dir/src/c_shader.cpp.o: src/c_shader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Doomu.dir/src/c_shader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Doomu.dir/src/c_shader.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Doomu.dir/src/c_shader.cpp.o -c /home/mayajama/Projects/openGL/doomu/src/c_shader.cpp
 
 CMakeFiles/Doomu.dir/src/c_shader.cpp.i: cmake_force
@@ -124,7 +137,7 @@ CMakeFiles/Doomu.dir/src/c_shader.cpp.s: cmake_force
 
 CMakeFiles/Doomu.dir/src/glad.c.o: CMakeFiles/Doomu.dir/flags.make
 CMakeFiles/Doomu.dir/src/glad.c.o: src/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Doomu.dir/src/glad.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Doomu.dir/src/glad.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Doomu.dir/src/glad.c.o   -c /home/mayajama/Projects/openGL/doomu/src/glad.c
 
 CMakeFiles/Doomu.dir/src/glad.c.i: cmake_force
@@ -137,7 +150,7 @@ CMakeFiles/Doomu.dir/src/glad.c.s: cmake_force
 
 CMakeFiles/Doomu.dir/src/main.cpp.o: CMakeFiles/Doomu.dir/flags.make
 CMakeFiles/Doomu.dir/src/main.cpp.o: src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Doomu.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Doomu.dir/src/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Doomu.dir/src/main.cpp.o -c /home/mayajama/Projects/openGL/doomu/src/main.cpp
 
 CMakeFiles/Doomu.dir/src/main.cpp.i: cmake_force
@@ -153,6 +166,7 @@ Doomu_OBJECTS = \
 "CMakeFiles/Doomu.dir/src/c_3drender.cpp.o" \
 "CMakeFiles/Doomu.dir/src/c_camera.cpp.o" \
 "CMakeFiles/Doomu.dir/src/c_game.cpp.o" \
+"CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o" \
 "CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o" \
 "CMakeFiles/Doomu.dir/src/c_shader.cpp.o" \
 "CMakeFiles/Doomu.dir/src/glad.c.o" \
@@ -164,13 +178,14 @@ Doomu_EXTERNAL_OBJECTS =
 Doomu: CMakeFiles/Doomu.dir/src/c_3drender.cpp.o
 Doomu: CMakeFiles/Doomu.dir/src/c_camera.cpp.o
 Doomu: CMakeFiles/Doomu.dir/src/c_game.cpp.o
+Doomu: CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o
 Doomu: CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o
 Doomu: CMakeFiles/Doomu.dir/src/c_shader.cpp.o
 Doomu: CMakeFiles/Doomu.dir/src/glad.c.o
 Doomu: CMakeFiles/Doomu.dir/src/main.cpp.o
 Doomu: CMakeFiles/Doomu.dir/build.make
 Doomu: CMakeFiles/Doomu.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Doomu"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mayajama/Projects/openGL/doomu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable Doomu"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Doomu.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

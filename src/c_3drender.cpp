@@ -1,10 +1,13 @@
 #include "c_3drender.h"
 
 SimpleRender::SimpleRender(Shader &shader)
+    : render_view(glm::mat4(1.0f)), render_projection(glm::mat4(1.0f))
 {
     // Shader shader = &shader
     this->shader = shader;
     this->initRenderData();
+
+    render_projection = glm::perspective(glm::radians(45.0f), (float)1.0, 0.1f, 100.0f);
 }
 
 SimpleRender::~SimpleRender()
@@ -13,7 +16,7 @@ SimpleRender::~SimpleRender()
     glDeleteVertexArrays(1, &this->quadVAO);
 }
 
-void SimpleRender::Draw3D(glm::vec3 position, glm::mat4 playerview)
+void SimpleRender::Draw3D(glm::vec3 position, glm::vec3 size)
 {
     // prepare the transforms
     this->shader.Use();
@@ -22,18 +25,13 @@ void SimpleRender::Draw3D(glm::vec3 position, glm::mat4 playerview)
     // Matrix multiplication are in reverse order:
     // 1. scale, 2. rotate, 3. translate
     model = glm::translate(model, glm::vec3(position.x, position.y, position.z));
+    model = glm::scale(model, size);
     // model = glm::rotate(model, glm::radians(position.x), glm::vec3(1.0f, 0.3f, 0.5f));
 
-    // set the shader vertex shader
-    this->shader.SetMatrix4("model", model);
-
-    // Debug
     // 3d projection stuff
-    glm::mat4 view = playerview;
-    glm::mat4 projection = glm::mat4(1.0f);
-    projection = glm::perspective(glm::radians(45.0f), (float)1.0, 0.1f, 100.0f);
-    this->shader.SetMatrix4("view", view);
-    this->shader.SetMatrix4("projection", projection);
+    this->shader.SetMatrix4("model", model);
+    this->shader.SetMatrix4("view", this->render_view);
+    this->shader.SetMatrix4("projection", this->render_projection);
 
     // render textured quad
     this->shader.SetVector3f("ourColor", glm::vec3(0.5f, 0.5f, 0.5f));
