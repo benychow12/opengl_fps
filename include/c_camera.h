@@ -11,7 +11,9 @@ enum Camera_Movement {
     CAM_FORWARD,
     CAM_BACKWARD,
     CAM_LEFT,
-    CAM_RIGHT
+    CAM_RIGHT,
+    CAM_UP,
+    CAM_DOWN
 };
 
 class Camera

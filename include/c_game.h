@@ -21,7 +21,7 @@ enum Direction
 
 // Collision typedef that represents collision data
 // <collision?, what direction?>
-// typedef std::tuple<bool, Direction, glm::vec2> Collision;
+// typedef std::tuple<bool, Direction, glm::vec3> Collision;
 
 // Game class holds all game-related state and functionality
 class Game

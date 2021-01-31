@@ -32,3 +32,18 @@
 - [] Do collision partially done, need to implement a way to find direction of
   collision and player position = collision object.size to prevent from
   intersecting
+
+1/25/2021
+- For the collision, would prob take the center of obj 1 difference center of
+  obj2 to get the vector of collision. then to stop moving you just stop
+  movement in that direction some how...
+
+1/26/2021
+- [x] Finally got a rudimentary collision detection system that prevents player
+  movement
+- [] Need to clean it up a bit and generalize to more objects
+
+1/30/2021
++ Collision fixed. It was because AABB collision assumes the position is
+comparing top left to top left coordinate. The rendering currently has postion
+then scale so need to find top left manually. 

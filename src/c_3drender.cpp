@@ -24,8 +24,9 @@ void SimpleRender::Draw3D(glm::vec3 position, glm::vec3 size)
 
     // Matrix multiplication are in reverse order:
     // 1. scale, 2. rotate, 3. translate
-    model = glm::translate(model, glm::vec3(position.x, position.y, position.z));
     model = glm::scale(model, size);
+    model = glm::translate(model, glm::vec3(position.x, position.y, position.z));
+    // model = glm::scale(model, size);
     // model = glm::rotate(model, glm::radians(position.x), glm::vec3(1.0f, 0.3f, 0.5f));
 
     // 3d projection stuff

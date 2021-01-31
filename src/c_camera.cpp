@@ -49,10 +49,20 @@ void Camera::ProcessKeyboardCamera(Camera_Movement direction, float deltaTime)
     if (direction == CAM_LEFT)
     {
         Position -= Right * velocity;
+        // Yaw -= 2.0f;
     }
     if (direction == CAM_RIGHT)
     {
         Position += Right * velocity;
+        // Yaw += 2.0f;
+    }
+    if (direction == CAM_UP)
+    {
+        Position.y += 0.5f;
+    }
+    if (direction == CAM_DOWN)
+    {
+        Position.y -= 0.5f;
     }
 }
 
