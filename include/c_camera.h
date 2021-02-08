@@ -12,8 +12,6 @@ enum Camera_Movement {
     CAM_BACKWARD,
     CAM_LEFT,
     CAM_RIGHT,
-    CAM_UP,
-    CAM_DOWN
 };
 
 class Camera
@@ -55,8 +53,12 @@ class Camera
         // expects offset value in both x and y direction
         void ProcessMouseMovementCamera(float xoffset, float yoffset, GLboolean constrainPitch = true);
 
+        void no_clip_toggle();
+
     private:
         // calculate the front vector from camera's (updated) Euler angles
         void UpdateCameraVectors();
+
+        bool no_clip;
 };
 #endif

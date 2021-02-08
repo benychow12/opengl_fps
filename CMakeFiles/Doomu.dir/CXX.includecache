@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/mayajama/Projects/openGL/doomu/src/c_3drender.cpp
+c_3drender.h
+/home/mayajama/Projects/openGL/doomu/src/c_3drender.h
+
 /home/mayajama/Projects/openGL/doomu/src/c_game.cpp
 iostream
 -

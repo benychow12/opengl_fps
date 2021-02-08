@@ -124,7 +124,6 @@ int main(int argc, char* argv[])
         Doomu.Render(deltaTime);
 
         glfwSwapBuffers(window);
-
     }
     glfwTerminate();
     return 0;

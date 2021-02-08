@@ -21,7 +21,7 @@ GameObject *bloo;
 GameObject *bloo2;
 bool CheckCollision(GameObject &one, GameObject &two);
 
-Camera PlayerCamera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera PlayerCamera(glm::vec3(0.0f, 0.5f, 0.0f));
 
 Game::Game(unsigned int width, unsigned int height)
     : State(GAME_ACTIVE), Width(width), Height(height)
@@ -49,18 +49,18 @@ void Game::Init()
     // configure the shaders
     glEnable(GL_DEPTH_TEST);
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     
     // set render-specific controls
     Renderer = new SimpleRender(ResourceManager::GetShader("shader_main"));
 
     // Configure game objects
-    Player = new GameObject(PlayerCamera.GetPosition(), glm::vec3(1.0f, 1.0f, 1.0f), true);
-    bloo = new  GameObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f), true);
-    bloo2 = new GameObject(glm::vec3(0.0f, -3.0f, 0.0f), glm::vec3(10.0f, 1.0f, 10.0f), true);
+    Player = new GameObject(PlayerCamera.GetPosition(), glm::vec3(0.1f, 0.1f, 0.1f), true);
+    bloo = new  GameObject(glm::vec3(1.0f, 0.5f, 1.0f), glm::vec3(1.0f), true);
+    bloo2 = new GameObject(glm::vec3(0.0f, -0.5f, 0.0f), glm::vec3(100.0f, 0.5f, 100.0f), true);
     // DEBUG
     bloobloo.push_back(bloo);
     bloobloo.push_back(bloo2);
-    std::cout << "blobllosize...." << bloobloo.size() << std::endl;
 }
 
 void Game::ProcessInput(float dt)
@@ -69,31 +69,30 @@ void Game::ProcessInput(float dt)
     {
         if (this->Keys[GLFW_KEY_W])
         {
-            // std:: cout << "W pressed..." << std::endl;
             PlayerCamera.ProcessKeyboardCamera(CAM_FORWARD, dt);            
         }
         if (this->Keys[GLFW_KEY_S])
         {
-            // std::cout << "S pressed..." << std::endl;
             PlayerCamera.ProcessKeyboardCamera(CAM_BACKWARD, dt);            
         }
         if (this->Keys[GLFW_KEY_A])
         {
-            // std::cout << "A pressed..." << std::endl;
             PlayerCamera.ProcessKeyboardCamera(CAM_LEFT, dt);            
         }
         if (this->Keys[GLFW_KEY_D])
         {
-            // std::cout << "D pressed..." << std::endl;
             PlayerCamera.ProcessKeyboardCamera(CAM_RIGHT, dt);            
-        }
-        if (this->Keys[GLFW_KEY_C])
-        {
-            PlayerCamera.ProcessKeyboardCamera(CAM_UP, dt);            
         }
         if (this->Keys[GLFW_KEY_V])
         {
-            PlayerCamera.ProcessKeyboardCamera(CAM_DOWN, dt);            
+            // Debug
+            std::cout << glfwGetTime() <<  "Toggling no clip" << std::endl;
+
+            PlayerCamera.no_clip_toggle();
+            Player->IsSolid = !Player->IsSolid;
+
+            // To fix registering multiple events
+            this->Keys[GLFW_KEY_V] = false;
         }
 
         PlayerCamera.ProcessMouseMovementCamera(cam_xoffset, cam_yoffset);
@@ -124,21 +123,10 @@ void Game::Update(float dt)
     Player->Position = PlayerCamera.Position;
     for (auto &object : bloobloo)
     {
-        std::cout << "bloobloo sizes" << std::endl;
-        std::cout << object->Size.x << std::endl;
-        std::cout << object->Size.y << std::endl;
-        std::cout << object->Size.z << std::endl;
-
         if (CheckCollision(*Player, *object))
         {
-            std::cout << "collision detected" << std::endl;
             PlayerCamera.Position = CurrentPos;
             Player->Position = CurrentPos;
-        }
-        else
-        {
-            std::cout << "chilling" << std::endl;
-            Player->Position = PlayerCamera.Position;
         }
     }
 }
@@ -153,8 +141,8 @@ void Game::Render(float dt)
     // debug for game object
     bloo->Draw(*Renderer);
     bloo2->Draw(*Renderer);
-    // Renderer->Draw3D(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f));
-    // Renderer->Draw3D(glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 10.0f));
+    Renderer->Draw3D(Triangle, glm::vec3(2.0f, 0.5f, 2.0f), glm::vec3(1.0f));
+    // Renderer->Draw3D(Triangle, glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 10.0f));
 }
 
 // Simple AABB check for collision, return true/false
@@ -165,22 +153,23 @@ bool CheckCollision(GameObject &one, GameObject &two)
 {
     bool collision_detect = true;
 
-    for (int i = 0; i < 3; ++i)
+    if (one.IsSolid && two.IsSolid)
     {
-        // define top left position
-        float one_top_left = one.Position[i] - one.Size[i] / 2.0f;
-        float two_top_left = two.Position[i] - two.Size[i] / 2.0f;
+        // For xyz axis collision check
+        for (int i = 0; i < 3; ++i)
+        {
+            // define top left position
+            float one_top_left = one.Position[i] - one.Size[i] / 2.0f;
+            float two_top_left = two.Position[i] - two.Size[i] / 2.0f;
 
-        std::cout << "one two top left is..." << one_top_left << "   " << two_top_left << std::endl;
+            collision_detect &= one_top_left + one.Size[i] >= two_top_left && two_top_left + two.Size[i] >= one_top_left;
+        }
 
-        collision_detect &= one_top_left + one.Size[i] >= two_top_left && two_top_left + two.Size[i] >= one_top_left;
+        if (collision_detect)
+        {
+            return true;
+        }
     }
-
-    if (collision_detect)
-    {
-        return true;
-    }
-
     return false;
 }
 

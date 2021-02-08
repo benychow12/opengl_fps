@@ -7,6 +7,12 @@
 
 #include "c_shader.h"
 
+enum Shape
+{
+    Cube, 
+    Triangle
+};
+
 class SimpleRender
 {
 public:
@@ -16,7 +22,8 @@ public:
     // mat4 for view for render
     glm::mat4 render_view;
     // Renders a defined 3d object
-    void Draw3D(glm::vec3 position, glm::vec3 size);
+    void Draw3D(Shape shape, glm::vec3 position, glm::vec3 size);
+
 private:
     // Render state
     Shader shader;

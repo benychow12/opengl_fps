@@ -12,5 +12,5 @@ GameObject::GameObject(glm::vec3 pos, glm::vec3 size, bool solid)
 
 void GameObject::Draw(SimpleRender &renderer)
 {
-    renderer.Draw3D(this->Position, this->Size);
+    renderer.Draw3D(Cube, this->Position, this->Size);
 }

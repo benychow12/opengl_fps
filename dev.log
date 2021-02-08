@@ -47,3 +47,30 @@
 + Collision fixed. It was because AABB collision assumes the position is
 comparing top left to top left coordinate. The rendering currently has postion
 then scale so need to find top left manually. 
+
+2/1/2021
+* Address timing
+* Add texture mapping
+* Create first level
+
+2/3/2021
++ FPS style movement + toggling V for noclip
++ enable no collision if no clip enabled
+* enable gravity some how...
+
+2/4/2021
+* FPS style movement + toggling V for noclip
+* enable no collision if no clip enabled
+* Toggling no clip triggers 3 times....
+
+2/6/2021
++ Toggling no clip triggers 3 times...
+    I can't believe just disabling the boolean during the key handler worked
+* enable gravity some how? Jumping with space?
+* textures!
+
+2/7/2021
++ Try to get different shapes other than cube in render class
+    - Draw3D now takes in argument from enum Shapes
+    - Maybe this will extend to ramps and stuff and see if I can get that going
+* Need to figure out how ramps will work

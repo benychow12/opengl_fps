@@ -3,7 +3,7 @@
 // default camera values
 const float YAW = -90.0f;
 const float PITCH = 0.0f;
-const float SPEED = 0.5f;
+const float SPEED = 0.1f;
 const float SENSITIVITY = 0.5f;
 
 Camera::Camera(glm::vec3 position, glm::vec3 up) :
@@ -11,6 +11,7 @@ Camera::Camera(glm::vec3 position, glm::vec3 up) :
 {
     Position = position;
     WorldUp = up;
+    no_clip = false;
     UpdateCameraVectors();
 }
 
@@ -21,6 +22,7 @@ Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float u
     WorldUp = glm::vec3(upX, upY, upZ);
     Yaw = yaw;
     Pitch = pitch;
+    no_clip = false;
     UpdateCameraVectors();
 }
 
@@ -40,29 +42,51 @@ void Camera::ProcessKeyboardCamera(Camera_Movement direction, float deltaTime)
 
     if (direction == CAM_FORWARD)
     {
-        Position += Front * velocity;
+        if (!this->no_clip)
+        {
+            Position.x += Front.x * velocity;
+            Position.z += Front.z * velocity;
+        }
+        else
+        {
+            Position += Front * velocity;
+        }
     }
     if (direction == CAM_BACKWARD)
     {
-        Position -= Front * velocity;
+        if (!this->no_clip)
+        {
+            Position.x -= Front.x * velocity;
+            Position.z -= Front.z * velocity;
+        }
+        else
+        {
+            Position -= Front * velocity;
+        }
     }
     if (direction == CAM_LEFT)
     {
-        Position -= Right * velocity;
-        // Yaw -= 2.0f;
+        if (!this->no_clip)
+        {
+            Position.x -= Right.x * velocity;
+            Position.z -= Right.z * velocity;
+        }
+        else
+        {
+            Position -= Right * velocity;
+        }
     }
     if (direction == CAM_RIGHT)
     {
-        Position += Right * velocity;
-        // Yaw += 2.0f;
-    }
-    if (direction == CAM_UP)
-    {
-        Position.y += 0.5f;
-    }
-    if (direction == CAM_DOWN)
-    {
-        Position.y -= 0.5f;
+        if (!this->no_clip)
+        {
+            Position.x += Right.x * velocity;
+            Position.z += Right.z * velocity;
+        }
+        else
+        {
+            Position += Right * velocity;
+        }
     }
 }
 
@@ -105,4 +129,9 @@ void Camera::UpdateCameraVectors()
     // in slower movement
     Right = glm::normalize(glm::cross(Front, WorldUp));
     Up = glm::normalize(glm::cross(Right, Front));
+}
+
+void Camera::no_clip_toggle()
+{
+    this->no_clip = !this->no_clip;
 }
