@@ -74,3 +74,12 @@ then scale so need to find top left manually.
     - Draw3D now takes in argument from enum Shapes
     - Maybe this will extend to ramps and stuff and see if I can get that going
 * Need to figure out how ramps will work
++ ResManager updated for Texture3D 
+
+2/9/2021
++ Shaders done for Textures2D
++ VAO configured for Textures attrib pointer
++ Loading of textures seems ok
+* Gameobject creation should load texture to use, aka edit gameobject
+* constructor
+

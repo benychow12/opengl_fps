@@ -10,6 +10,7 @@ CMakeFiles/Doomu.dir/src/c_3drender.cpp.o
  include/KHR/khrplatform.h
  include/c_3drender.h
  include/c_shader.h
+ include/c_texture.h
  include/glad/glad.h
  include/glm/common.hpp
  include/glm/detail/_fixes.hpp
@@ -388,6 +389,7 @@ CMakeFiles/Doomu.dir/src/c_game.cpp.o
  include/c_gameobject.h
  include/c_resmanager.h
  include/c_shader.h
+ include/c_texture.h
  include/glad/glad.h
  include/glm/common.hpp
  include/glm/detail/_fixes.hpp
@@ -602,6 +604,7 @@ CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o
  include/c_3drender.h
  include/c_gameobject.h
  include/c_shader.h
+ include/c_texture.h
  include/glad/glad.h
  include/glm/common.hpp
  include/glm/detail/_fixes.hpp
@@ -809,6 +812,7 @@ CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o
  include/KHR/khrplatform.h
  include/c_resmanager.h
  include/c_shader.h
+ include/c_texture.h
  include/glad/glad.h
  include/glm/common.hpp
  include/glm/detail/_fixes.hpp
@@ -1218,12 +1222,18 @@ CMakeFiles/Doomu.dir/src/c_shader.cpp.o
  include/glm/vec3.hpp
  include/glm/vec4.hpp
  include/glm/vector_relational.hpp
+CMakeFiles/Doomu.dir/src/c_texture.cpp.o
+ /home/mayajama/Projects/openGL/doomu/src/c_texture.cpp
+ include/KHR/khrplatform.h
+ include/c_texture.h
+ include/glad/glad.h
 CMakeFiles/Doomu.dir/src/main.cpp.o
  /home/mayajama/Projects/openGL/doomu/src/main.cpp
  include/KHR/khrplatform.h
  include/c_game.h
  include/c_resmanager.h
  include/c_shader.h
+ include/c_texture.h
  include/glad/glad.h
  include/glm/common.hpp
  include/glm/detail/_fixes.hpp

@@ -20,6 +20,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/mayajama/Projects/openGL/doomu/src/c_gameobject.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o"
   "/home/mayajama/Projects/openGL/doomu/src/c_resmanager.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o"
   "/home/mayajama/Projects/openGL/doomu/src/c_shader.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_shader.cpp.o"
+  "/home/mayajama/Projects/openGL/doomu/src/c_texture.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_texture.cpp.o"
   "/home/mayajama/Projects/openGL/doomu/src/main.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

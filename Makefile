@@ -285,6 +285,33 @@ src/c_shader.cpp.s:
 	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_shader.cpp.s
 .PHONY : src/c_shader.cpp.s
 
+src/c_texture.o: src/c_texture.cpp.o
+
+.PHONY : src/c_texture.o
+
+# target to build an object file
+src/c_texture.cpp.o:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_texture.cpp.o
+.PHONY : src/c_texture.cpp.o
+
+src/c_texture.i: src/c_texture.cpp.i
+
+.PHONY : src/c_texture.i
+
+# target to preprocess a source file
+src/c_texture.cpp.i:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_texture.cpp.i
+.PHONY : src/c_texture.cpp.i
+
+src/c_texture.s: src/c_texture.cpp.s
+
+.PHONY : src/c_texture.s
+
+# target to generate assembly for a file
+src/c_texture.cpp.s:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_texture.cpp.s
+.PHONY : src/c_texture.cpp.s
+
 src/glad.o: src/glad.c.o
 
 .PHONY : src/glad.o
@@ -366,6 +393,9 @@ help:
 	@echo "... src/c_shader.o"
 	@echo "... src/c_shader.i"
 	@echo "... src/c_shader.s"
+	@echo "... src/c_texture.o"
+	@echo "... src/c_texture.i"
+	@echo "... src/c_texture.s"
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"

@@ -11,7 +11,7 @@
 #include <iostream>
 
 // Instantiate static variables
-// std::map<std::string, Texture2D>    ResourceManager::Textures;
+std::map<std::string, Texture2D>    ResourceManager::Textures;
 std::map<std::string, Shader>       ResourceManager::Shaders;
 
 Shader ResourceManager::LoadShader(const char* vShaderFile, const char* fShaderFile, const char *gShaderFile, std::string name)
@@ -25,7 +25,6 @@ Shader& ResourceManager::GetShader(std::string name)
     return Shaders[name];
 }
 
-/*
 Texture2D ResourceManager::LoadTexture(const char* file, bool alpha, std::string name)
 {
     Textures[name] = loadTextureFromFile(file, alpha);
@@ -49,7 +48,6 @@ void ResourceManager::Clear()
         glDeleteTextures(1, &iter.second.ID);
     }
 }
-*/
 
 Shader ResourceManager::loadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char *gShaderFile)
 {
@@ -108,7 +106,6 @@ Shader ResourceManager::loadShaderFromFile(const char* vShaderFile, const char* 
     return shader;
 }
 
-/*
 Texture2D ResourceManager::loadTextureFromFile(const char* file, bool alpha)
 {
     // create texture object
@@ -120,6 +117,7 @@ Texture2D ResourceManager::loadTextureFromFile(const char* file, bool alpha)
     }
 
     // load image
+    // TODO - does this need to be in a try?
     int width, height, nrChannels;
     unsigned char* data = stbi_load(file, &width, &height, &nrChannels, 0);
 
@@ -130,4 +128,3 @@ Texture2D ResourceManager::loadTextureFromFile(const char* file, bool alpha)
     stbi_image_free(data);
     return texture;
 }
-*/

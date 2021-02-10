@@ -6,6 +6,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 
 #include "c_shader.h"
+#include "c_texture.h"
 
 enum Shape
 {

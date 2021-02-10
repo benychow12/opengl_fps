@@ -4,7 +4,7 @@
 #include "c_resmanager.h"
 #include "c_3drender.h"
 #include "c_camera.h"
-#include <c_gameobject.h>
+#include "c_gameobject.h"
 
 #include "glm/gtx/string_cast.hpp"
 
@@ -53,6 +53,10 @@ void Game::Init()
     
     // set render-specific controls
     Renderer = new SimpleRender(ResourceManager::GetShader("shader_main"));
+
+    // DEBUG - should probably offload this a bit more
+    // load textures
+    ResourceManager::LoadTexture("assets/source.png", true, "def");
 
     // Configure game objects
     Player = new GameObject(PlayerCamera.GetPosition(), glm::vec3(0.1f, 0.1f, 0.1f), true);
@@ -106,10 +110,10 @@ void Game::ProcessInput(float dt)
 void Game::Update(float dt)
 {
     // Debug
-    std::cout << "Player Position..." << std::endl;
-    std::cout << Player->Position.x << std::endl;
-    std::cout << Player->Position.y << std::endl;
-    std::cout << Player->Position.z << std::endl;
+   //  std::cout << "Player Position..." << std::endl;
+   //  std::cout << Player->Position.x << std::endl;
+   //  std::cout << Player->Position.y << std::endl;
+   //  std::cout << Player->Position.z << std::endl;
 
     // Collision in game update
     // this->DoCollisions();
@@ -141,7 +145,7 @@ void Game::Render(float dt)
     // debug for game object
     bloo->Draw(*Renderer);
     bloo2->Draw(*Renderer);
-    Renderer->Draw3D(Triangle, glm::vec3(2.0f, 0.5f, 2.0f), glm::vec3(1.0f));
+    // Renderer->Draw3D(Triangle, glm::vec3(2.0f, 0.5f, 2.0f), glm::vec3(1.0f));
     // Renderer->Draw3D(Triangle, glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 10.0f));
 }
 

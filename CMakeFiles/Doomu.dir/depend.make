@@ -9,6 +9,7 @@ CMakeFiles/Doomu.dir/src/c_3drender.cpp.o: src/c_3drender.cpp
 CMakeFiles/Doomu.dir/src/c_3drender.cpp.o: include/KHR/khrplatform.h
 CMakeFiles/Doomu.dir/src/c_3drender.cpp.o: include/c_3drender.h
 CMakeFiles/Doomu.dir/src/c_3drender.cpp.o: include/c_shader.h
+CMakeFiles/Doomu.dir/src/c_3drender.cpp.o: include/c_texture.h
 CMakeFiles/Doomu.dir/src/c_3drender.cpp.o: include/glad/glad.h
 CMakeFiles/Doomu.dir/src/c_3drender.cpp.o: include/glm/common.hpp
 CMakeFiles/Doomu.dir/src/c_3drender.cpp.o: include/glm/detail/_fixes.hpp
@@ -387,6 +388,7 @@ CMakeFiles/Doomu.dir/src/c_game.cpp.o: include/c_game.h
 CMakeFiles/Doomu.dir/src/c_game.cpp.o: include/c_gameobject.h
 CMakeFiles/Doomu.dir/src/c_game.cpp.o: include/c_resmanager.h
 CMakeFiles/Doomu.dir/src/c_game.cpp.o: include/c_shader.h
+CMakeFiles/Doomu.dir/src/c_game.cpp.o: include/c_texture.h
 CMakeFiles/Doomu.dir/src/c_game.cpp.o: include/glad/glad.h
 CMakeFiles/Doomu.dir/src/c_game.cpp.o: include/glm/common.hpp
 CMakeFiles/Doomu.dir/src/c_game.cpp.o: include/glm/detail/_fixes.hpp
@@ -601,6 +603,7 @@ CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o: include/KHR/khrplatform.h
 CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o: include/c_3drender.h
 CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o: include/c_gameobject.h
 CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o: include/c_shader.h
+CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o: include/c_texture.h
 CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o: include/glad/glad.h
 CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o: include/glm/common.hpp
 CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o: include/glm/detail/_fixes.hpp
@@ -808,6 +811,7 @@ CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o: src/c_resmanager.cpp
 CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o: include/KHR/khrplatform.h
 CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o: include/c_resmanager.h
 CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o: include/c_shader.h
+CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o: include/c_texture.h
 CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o: include/glad/glad.h
 CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o: include/glm/common.hpp
 CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o: include/glm/detail/_fixes.hpp
@@ -1218,11 +1222,17 @@ CMakeFiles/Doomu.dir/src/c_shader.cpp.o: include/glm/vec3.hpp
 CMakeFiles/Doomu.dir/src/c_shader.cpp.o: include/glm/vec4.hpp
 CMakeFiles/Doomu.dir/src/c_shader.cpp.o: include/glm/vector_relational.hpp
 
+CMakeFiles/Doomu.dir/src/c_texture.cpp.o: src/c_texture.cpp
+CMakeFiles/Doomu.dir/src/c_texture.cpp.o: include/KHR/khrplatform.h
+CMakeFiles/Doomu.dir/src/c_texture.cpp.o: include/c_texture.h
+CMakeFiles/Doomu.dir/src/c_texture.cpp.o: include/glad/glad.h
+
 CMakeFiles/Doomu.dir/src/main.cpp.o: src/main.cpp
 CMakeFiles/Doomu.dir/src/main.cpp.o: include/KHR/khrplatform.h
 CMakeFiles/Doomu.dir/src/main.cpp.o: include/c_game.h
 CMakeFiles/Doomu.dir/src/main.cpp.o: include/c_resmanager.h
 CMakeFiles/Doomu.dir/src/main.cpp.o: include/c_shader.h
+CMakeFiles/Doomu.dir/src/main.cpp.o: include/c_texture.h
 CMakeFiles/Doomu.dir/src/main.cpp.o: include/glad/glad.h
 CMakeFiles/Doomu.dir/src/main.cpp.o: include/glm/common.hpp
 CMakeFiles/Doomu.dir/src/main.cpp.o: include/glm/detail/_fixes.hpp

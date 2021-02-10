@@ -2,48 +2,48 @@
 
 float cube_vertices[] = {
     // square face 1 (back)
-    -0.5f, -0.5f, -0.5f, // 0.0f, 0.0f, // bottom left
-    0.5f, -0.5f, -0.5f,  // 1.0f, 0.0f,// bottom right
-    0.5f, 0.5f, -0.5f,   // 1.0f, 1.0f,// top right
-    0.5f, 0.5f, -0.5f,   // 1.0f, 1.0f,// top right
-    -0.5f, 0.5f, -0.5f,  // 0.0f, 1.0f,// top left
-    -0.5f, -0.5f, -0.5f, // 0.0f, 0.0f,// bottom left
+    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, // bottom left
+    0.5f, -0.5f, -0.5f, 1.0f, 0.0f,// bottom right
+    0.5f, 0.5f, -0.5f, 1.0f, 1.0f,// top right
+    0.5f, 0.5f, -0.5f, 1.0f, 1.0f,// top right
+    -0.5f, 0.5f, -0.5f, 0.0f, 1.0f,// top left
+    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,// bottom left
     // square face 2 (front))
-    -0.5f, -0.5f, 0.5f, // 0.0f, 0.0f, // bottom left
-    0.5f, -0.5f, 0.5f,  // 1.0f, 0.0f,// bottom right
-    0.5f, 0.5f, 0.5f,   // 1.0f, 1.0f,// top right
-    0.5f, 0.5f, 0.5f,   // 1.0f, 1.0f,// top right
-    -0.5f, 0.5f, 0.5f,  // 0.0f, 1.0f,// top left
-    -0.5f, -0.5f, 0.5f, // 0.0f, 0.0f,// bottom left
+    -0.5f, -0.5f, 0.5f, 0.0f, 0.0f, // bottom left
+    0.5f, -0.5f, 0.5f, 1.0f, 0.0f,// bottom right
+    0.5f, 0.5f, 0.5f, 1.0f, 1.0f,// top right
+    0.5f, 0.5f, 0.5f, 1.0f, 1.0f,// top right
+    -0.5f, 0.5f, 0.5f, 0.0f, 1.0f,// top left
+    -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,// bottom left
 
-    -0.5f,  0.5f,  0.5f, // 1.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f, // 1.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f, // 0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f, // 0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f, // 0.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f, // 1.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f, 1.0f, 0.0f,
+    -0.5f,  0.5f, -0.5f, 1.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+    -0.5f, -0.5f,  0.5f, 0.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f, 1.0f, 0.0f,
 
-     0.5f,  0.5f,  0.5f,  //1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  //1.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  //0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  //0.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  //0.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  //1.0f, 0.0f,
+     0.5f,  0.5f,  0.5f, 1.0f, 0.0f,
+     0.5f,  0.5f, -0.5f, 1.0f, 1.0f,
+     0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+     0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+     0.5f, -0.5f,  0.5f, 0.0f, 0.0f,
+     0.5f,  0.5f,  0.5f, 1.0f, 0.0f,
 
-    -0.5f, -0.5f, -0.5f,  //0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  //1.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  //1.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  //1.0f, 0.0f,
-    -0.5f, -0.5f,  0.5f,  //0.0f, 0.0f,
-    -0.5f, -0.5f, -0.5f,  //0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+     0.5f, -0.5f, -0.5f, 1.0f, 1.0f,
+     0.5f, -0.5f,  0.5f, 1.0f, 0.0f,
+     0.5f, -0.5f,  0.5f, 1.0f, 0.0f,
+    -0.5f, -0.5f,  0.5f, 0.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
 
     // top
-    -0.5f,  0.5f, -0.5f,  //0.0f, 10.0f,
-     0.5f,  0.5f, -0.5f,  //10.0f, 10.0f,
-     0.5f,  0.5f,  0.5f,  //10.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  //10.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  //0.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f  //0.0f, 10.0f
+    -0.5f,  0.5f, -0.5f, 0.0f, 10.0f,
+     0.5f,  0.5f, -0.5f, 10.0f, 10.0f,
+     0.5f,  0.5f,  0.5f, 10.0f, 0.0f,
+     0.5f,  0.5f,  0.5f, 10.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f, 0.0f, 0.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f, 10.0f
 };
 
 float triangle_vertices[] = {
@@ -124,8 +124,12 @@ void SimpleRender::Draw3D(Shape shape, glm::vec3 position, glm::vec3 size)
     glBufferData(GL_ARRAY_BUFFER, vertices_size, vertices, GL_STATIC_DRAW);
 
     glBindVertexArray(this->quadVAO);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    // Position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    // texture coordinate attribute
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
     
     // prepare the transforms
     this->shader.Use();
