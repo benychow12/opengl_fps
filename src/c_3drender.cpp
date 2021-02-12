@@ -2,12 +2,12 @@
 
 float cube_vertices[] = {
     // square face 1 (back)
-    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, // bottom left
-    0.5f, -0.5f, -0.5f, 1.0f, 0.0f,// bottom right
-    0.5f, 0.5f, -0.5f, 1.0f, 1.0f,// top right
-    0.5f, 0.5f, -0.5f, 1.0f, 1.0f,// top right
-    -0.5f, 0.5f, -0.5f, 0.0f, 1.0f,// top left
-    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,// bottom left
+    -0.5f, -0.5f, -0.5f, 1.0f, 0.0f, // bottom left
+    0.5f, -0.5f, -0.5f, 0.0f, 0.0f,// bottom right
+    0.5f, 0.5f, -0.5f, 0.0f, 1.0f,// top right
+    0.5f, 0.5f, -0.5f, 0.0f, 1.0f,// top right
+    -0.5f, 0.5f, -0.5f, 1.0f, 1.0f,// top left
+    -0.5f, -0.5f, -0.5f, 1.0f, 0.0f,// bottom left
     // square face 2 (front))
     -0.5f, -0.5f, 0.5f, 0.0f, 0.0f, // bottom left
     0.5f, -0.5f, 0.5f, 1.0f, 0.0f,// bottom right
@@ -16,20 +16,23 @@ float cube_vertices[] = {
     -0.5f, 0.5f, 0.5f, 0.0f, 1.0f,// top left
     -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,// bottom left
 
-    -0.5f,  0.5f,  0.5f, 1.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f, 1.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f, 0.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f, 1.0f, 0.0f,
+    // Side well technically still a "front"
+    -0.5f,  0.5f,  0.5f, 1.0f, 1.0f,
+    -0.5f,  0.5f, -0.5f, 0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+    -0.5f, -0.5f,  0.5f, 1.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f, 1.0f, 1.0f,
 
-     0.5f,  0.5f,  0.5f, 1.0f, 0.0f,
+    // side to right
+     0.5f,  0.5f,  0.5f, 0.0f, 1.0f,
      0.5f,  0.5f, -0.5f, 1.0f, 1.0f,
-     0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+     0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
+     0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
      0.5f, -0.5f,  0.5f, 0.0f, 0.0f,
-     0.5f,  0.5f,  0.5f, 1.0f, 0.0f,
+     0.5f,  0.5f,  0.5f, 0.0f, 1.0f,
 
+     // bottom
     -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
      0.5f, -0.5f, -0.5f, 1.0f, 1.0f,
      0.5f, -0.5f,  0.5f, 1.0f, 0.0f,
@@ -38,12 +41,12 @@ float cube_vertices[] = {
     -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
 
     // top
-    -0.5f,  0.5f, -0.5f, 0.0f, 10.0f,
-     0.5f,  0.5f, -0.5f, 10.0f, 10.0f,
-     0.5f,  0.5f,  0.5f, 10.0f, 0.0f,
-     0.5f,  0.5f,  0.5f, 10.0f, 0.0f,
+    -0.5f,  0.5f, -0.5f, 0.0f, 1.0f,
+     0.5f,  0.5f, -0.5f, 1.0f, 1.0f,
+     0.5f,  0.5f,  0.5f, 1.0f, 0.0f,
+     0.5f,  0.5f,  0.5f, 1.0f, 0.0f,
     -0.5f,  0.5f,  0.5f, 0.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 10.0f
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 };
 
 float triangle_vertices[] = {
@@ -98,7 +101,7 @@ SimpleRender::~SimpleRender()
     glDeleteVertexArrays(1, &this->quadVAO);
 }
 
-void SimpleRender::Draw3D(Shape shape, glm::vec3 position, glm::vec3 size)
+void SimpleRender::Draw3D(Shape shape, glm::vec3 position, glm::vec3 size, Texture2D &texture)
 {
     // configure VAO/VBO
     unsigned int VBO;
@@ -149,6 +152,10 @@ void SimpleRender::Draw3D(Shape shape, glm::vec3 position, glm::vec3 size)
 
     // render textured quad
     this->shader.SetVector3f("ourColor", glm::vec3(0.5f, 0.5f, 0.5f));
+
+    // texture stuff
+    glActiveTexture(GL_TEXTURE0);
+    texture.Bind();
 
     glBindVertexArray(this->quadVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);

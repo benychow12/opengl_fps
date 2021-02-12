@@ -116,6 +116,8 @@ Texture2D ResourceManager::loadTextureFromFile(const char* file, bool alpha)
         texture.Image_Format = GL_RGBA;
     }
 
+    stbi_set_flip_vertically_on_load(true);
+
     // load image
     // TODO - does this need to be in a try?
     int width, height, nrChannels;

@@ -48,20 +48,21 @@ void Game::Init()
 
     // configure the shaders
     glEnable(GL_DEPTH_TEST);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    // glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     
     // set render-specific controls
     Renderer = new SimpleRender(ResourceManager::GetShader("shader_main"));
 
     // DEBUG - should probably offload this a bit more
     // load textures
-    ResourceManager::LoadTexture("assets/source.png", true, "def");
+    ResourceManager::LoadTexture("assets/source.png", true, "def_placeholder");
+    ResourceManager::LoadTexture("assets/tile066.png", true, "floor_tile");
 
     // Configure game objects
-    Player = new GameObject(PlayerCamera.GetPosition(), glm::vec3(0.1f, 0.1f, 0.1f), true);
-    bloo = new  GameObject(glm::vec3(1.0f, 0.5f, 1.0f), glm::vec3(1.0f), true);
-    bloo2 = new GameObject(glm::vec3(0.0f, -0.5f, 0.0f), glm::vec3(100.0f, 0.5f, 100.0f), true);
+    Player = new GameObject(PlayerCamera.GetPosition(), glm::vec3(0.1f, 0.1f, 0.1f), ResourceManager::GetTexture("def_placeholder"), true);
+    bloo = new  GameObject(glm::vec3(1.0f, 0.5f, 1.0f), glm::vec3(1.0f), ResourceManager::GetTexture("def_placeholder"), true);
+    bloo2 = new GameObject(glm::vec3(0.0f, -0.5f, 0.0f), glm::vec3(100.0f, 0.5f, 100.0f), ResourceManager::GetTexture("floor_tile"), true);
     // DEBUG
     bloobloo.push_back(bloo);
     bloobloo.push_back(bloo2);

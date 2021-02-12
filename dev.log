@@ -83,3 +83,7 @@ then scale so need to find top left manually.
 * Gameobject creation should load texture to use, aka edit gameobject
 * constructor
 
+2/11/2021
++ Gameobject creation should load texture to use, aka edit gameobject
+constructor
++ Fixed texture for cube not being mapped correctly
