@@ -94,7 +94,10 @@ sometimes. Suspect it has something to do with front = 0 vector. Right now i
 putted a debug message for now if gets updated to 000
 
 2/14/2021
-* Start separating gameobjects into something like the player, enemies, generic
-* game objects, wall to
-* be separate?
-* Lets get shooting mechanic implemented
++ Started some more separation of the gameobject with the player object.
+However this wasn't really thought out and should be taken a look at again.
++ Was able to implement some rudimentary form of raycasting for shooting
+mechanic which used point vs aabb collision. Should probably move all the
+collision functions to a static class to clean up the game.cpp a little bit
+more
+
