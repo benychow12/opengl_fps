@@ -5,6 +5,7 @@
 #include "c_3drender.h"
 #include "c_camera.h"
 #include "c_gameobject.h"
+#include "c_playerobject.h"
 
 #include "glm/gtx/string_cast.hpp"
 
@@ -13,15 +14,17 @@
 
 // Game-related state data
 SimpleRender *Renderer;
-GameObject *Player;
+PlayerObject *Player;
 
 // debug object
 std::vector<GameObject*> bloobloo;
+std::vector<PlayerObject*> PlayerObjs;
 GameObject *bloo;
 GameObject *bloo2;
 bool CheckCollision(GameObject &one, GameObject &two);
+bool CheckRaycast(glm::vec3 origin_position, glm::vec3 origin_dir, GameObject &two);
 
-Camera PlayerCamera(glm::vec3(0.0f, 0.5f, 0.0f));
+Camera PlayerCamera(glm::vec3(5.0f, 0.5f, 5.0f));
 
 Game::Game(unsigned int width, unsigned int height)
     : State(GAME_ACTIVE), Width(width), Height(height)
@@ -60,8 +63,8 @@ void Game::Init()
     ResourceManager::LoadTexture("assets/tile066.png", true, "floor_tile");
 
     // Configure game objects
-    Player = new GameObject(PlayerCamera.GetPosition(), glm::vec3(0.1f, 0.1f, 0.1f), ResourceManager::GetTexture("def_placeholder"), true);
-    bloo = new  GameObject(glm::vec3(1.0f, 0.5f, 1.0f), glm::vec3(1.0f), ResourceManager::GetTexture("def_placeholder"), true);
+    Player = new PlayerObject(PlayerCamera.GetPosition(), glm::vec3(0.2f, 0.2f, 0.2f), PlayerCamera.GetFront());
+    bloo = new  GameObject(glm::vec3(5.0f, 0.5f, 1.0f), glm::vec3(1.0f), ResourceManager::GetTexture("def_placeholder"), true);
     bloo2 = new GameObject(glm::vec3(0.0f, -0.5f, 0.0f), glm::vec3(100.0f, 0.5f, 100.0f), ResourceManager::GetTexture("floor_tile"), true);
     // DEBUG
     bloobloo.push_back(bloo);
@@ -100,7 +103,26 @@ void Game::ProcessInput(float dt)
             this->Keys[GLFW_KEY_V] = false;
         }
 
-        PlayerCamera.ProcessMouseMovementCamera(cam_xoffset, cam_yoffset);
+        if (this->Mouse[GLFW_MOUSE_BUTTON_LEFT])
+        {
+            std::cout << "left click" << std::endl;
+            this->Mouse[GLFW_MOUSE_BUTTON_LEFT] = false;
+            Player->player_action_shoot();
+            CheckRaycast(PlayerCamera.GetPosition(), PlayerCamera.GetFront(), *bloo); 
+
+            PlayerObject *bullet = new PlayerObject(PlayerCamera.GetPosition(), glm::vec3(0.01f), PlayerCamera.GetFront(), ResourceManager::GetTexture("def_placeholder"));
+            PlayerObjs.push_back(bullet);
+
+
+        }
+        if (this->Mouse[GLFW_MOUSE_BUTTON_RIGHT])
+        {
+            std::cout << "right click" << std::endl;
+            this->Mouse[GLFW_MOUSE_BUTTON_RIGHT] = false;
+        }
+
+
+        PlayerCamera.ProcessMouseMovementCamera(cam_xoffset, cam_yoffset, true);
         // reset the offsets to avoid drifting
         cam_xoffset = 0.0f;
         cam_yoffset = 0.0f;
@@ -111,19 +133,10 @@ void Game::ProcessInput(float dt)
 void Game::Update(float dt)
 {
     // Debug
-   //  std::cout << "Player Position..." << std::endl;
-   //  std::cout << Player->Position.x << std::endl;
-   //  std::cout << Player->Position.y << std::endl;
-   //  std::cout << Player->Position.z << std::endl;
+  //   std::cout << "PlayerPosition: " << glm::to_string(PlayerCamera.GetPosition()) << std::endl;
+  //   std::cout << "PlayerFront: " <<  glm::to_string(PlayerCamera.GetFront()) << std::endl;
 
-    // Collision in game update
-    // this->DoCollisions();
-    /*
-    if (CheckCollision(*Player, *bloo))
-    {
-        std::cout << "collision detected" << std::endl;
-    }
-    */
+    // if the player has moved then update the collisions?
     glm::vec3 CurrentPos = Player->Position;
     Player->Position = PlayerCamera.Position;
     for (auto &object : bloobloo)
@@ -134,6 +147,13 @@ void Game::Update(float dt)
             Player->Position = CurrentPos;
         }
     }
+
+    // Debug
+    // silly bullet
+    for (auto &object : PlayerObjs)
+    {
+        object->Position += object->player_direction * 0.1f;
+    }
 }
 
 void Game::Render(float dt)
@@ -143,11 +163,19 @@ void Game::Render(float dt)
     glm::mat4 view = PlayerCamera.GetViewMatrix();
     Renderer->render_view = view;
 
-    // debug for game object
-    bloo->Draw(*Renderer);
-    bloo2->Draw(*Renderer);
-    // Renderer->Draw3D(Triangle, glm::vec3(2.0f, 0.5f, 2.0f), glm::vec3(1.0f));
-    // Renderer->Draw3D(Triangle, glm::vec3(5.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 10.0f));
+    // // debug for game object
+    // bloo->Draw(*Renderer);
+    // bloo2->Draw(*Renderer);
+
+    for (auto &object : bloobloo)
+    {
+        object->Draw(*Renderer);
+    }
+    for (auto &object : PlayerObjs)
+    {
+        object->Draw(*Renderer);
+    }
+    // Renderer->Draw3D(Triangle, glm::vec3(2.0f, 0.5f, 2.0f), glm::vec3(1.0f), ResourceManager::GetTexture("def_placeholder"));
 }
 
 // Simple AABB check for collision, return true/false
@@ -178,26 +206,29 @@ bool CheckCollision(GameObject &one, GameObject &two)
     return false;
 }
 
-void Game::DoCollisions()
+// Raycast from origin location and see if it hits object
+bool CheckRaycast(glm::vec3 origin_position, glm::vec3 origin_dir, GameObject &one)
 {
-    // ineffective way to compare each object in gameobject vector
-    for (int i = 0; i < bloobloo.size(); ++i)
+    // for some arbitrary unit of travel
+    for(float c; c < 50; c++)
     {
-        for (int j = i + 1; j < bloobloo.size(); ++j)
+        // Point vs AABB collision
+        bool collision_detect = (origin_position.x >= one.Position.x - one.Size.x / 2.0f && origin_position.x <= one.Position.x + one.Size.x / 2.0f)
+            && (origin_position.y >= one.Position.y - one.Size.y / 2.0f && origin_position.y <= one.Position.y + one.Size.y / 2.0f)
+            && (origin_position.z >= one.Position.z - one.Size.z / 2.0f && origin_position.z <= one.Position.z + one.Size.z / 2.0f);
+
+        if(collision_detect)
         {
-            if (CheckCollision(*bloobloo[i], *bloobloo[j]))
-            {
-                std::cout << "collision deteced" << std::endl;
-                // i = 0 is the player object for now...
-                if (i == 0 && bloobloo[j]->IsSolid)
-                {
-                    std::cout << "player hitting solid" << std::endl;
-                }
-            }
-            else
-            {
-                std::cout << "chilling" << std::endl;
-            }
+            std::cout << "HIT!" << std::endl;
+            return true;
+        }
+        else // Update ray
+        {
+            origin_position += origin_dir;
+            std::cout << "Raycasting..." << glm::to_string(origin_position) << std::endl;
         }
     }
+    std::cout << "miss shot" << std::endl;
+    return false;
+
 }

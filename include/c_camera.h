@@ -41,8 +41,8 @@ class Camera
         // matrix
         glm::mat4 GetViewMatrix();
 
-        // returns player position
         glm::vec3 GetPosition();
+        glm::vec3 GetFront();
 
         // process input received from any keyboard-linked input system
         // accepts input paramters in the form of a camera defined enum (for

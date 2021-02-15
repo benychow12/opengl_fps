@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/mayajama/Projects/openGL/doomu/src/c_3drender.cpp
-c_3drender.h
-/home/mayajama/Projects/openGL/doomu/src/c_3drender.h
-
 /home/mayajama/Projects/openGL/doomu/src/c_game.cpp
 iostream
 -
@@ -23,6 +19,8 @@ c_camera.h
 /home/mayajama/Projects/openGL/doomu/src/c_camera.h
 c_gameobject.h
 /home/mayajama/Projects/openGL/doomu/src/c_gameobject.h
+c_playerobject.h
+/home/mayajama/Projects/openGL/doomu/src/c_playerobject.h
 glm/gtx/string_cast.hpp
 /home/mayajama/Projects/openGL/doomu/src/glm/gtx/string_cast.hpp
 vector
@@ -73,6 +71,10 @@ c_texture.h
 -
 c_3drender.h
 -
+
+include/c_playerobject.h
+c_gameobject.h
+include/c_gameobject.h
 
 include/c_resmanager.h
 map

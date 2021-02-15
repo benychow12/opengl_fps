@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Doomu.dir/src/c_camera.cpp.o"
   "CMakeFiles/Doomu.dir/src/c_game.cpp.o"
   "CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o"
+  "CMakeFiles/Doomu.dir/src/c_playerobject.cpp.o"
   "CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o"
   "CMakeFiles/Doomu.dir/src/c_shader.cpp.o"
   "CMakeFiles/Doomu.dir/src/c_texture.cpp.o"

@@ -20,6 +20,21 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+    if (button >= 0 && button < 5)
+    {
+        if (action == GLFW_PRESS)
+        {
+            Doomu.Mouse[button] = true;
+        }
+        else if (action == GLFW_RELEASE)
+        {
+            Doomu.Mouse[button] = false;
+        }
+    }
+}
+
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
     // debug
@@ -85,6 +100,7 @@ int main(int argc, char* argv[])
     }
 
     // Callbacks for viewport and kb
+    glfwSetMouseButtonCallback(window, mouse_button_callback);
     glfwSetKeyCallback(window, key_callback);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSetCursorPosCallback(window, mouse_callback);
@@ -93,6 +109,7 @@ int main(int argc, char* argv[])
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     glEnable(GL_BLEND);
+    glEnable(GL_DEPTH_TEST);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Init the game

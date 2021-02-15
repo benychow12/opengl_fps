@@ -1,5 +1,9 @@
 #include "c_3drender.h"
 
+// debug
+#include <iostream>
+#include <glm/gtx/string_cast.hpp>
+
 float cube_vertices[] = {
     // square face 1 (back)
     -0.5f, -0.5f, -0.5f, 1.0f, 0.0f, // bottom left
@@ -51,38 +55,38 @@ float cube_vertices[] = {
 
 float triangle_vertices[] = {
     // bottom
-    -0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f, -0.5f, 
-    0.5f, -0.5f, 0.5f,
-    0.5f, -0.5f, 0.5f,
-    -0.5f, -0.5f, 0.5f,
-    -0.5f, -0.5f, -0.5f,
+    -0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
+    0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 
+    0.5f, -0.5f, 0.5f, 0.0f, 1.0f,
+    0.5f, -0.5f, 0.5f, 0.0f, 1.0f,
+    -0.5f, -0.5f, 0.5f, 1.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
 
     //side /|
-    -0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f, -0.5f,
-    -0.5f, 0.5f, -0.5f,
+    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+    0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
+    -0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
 
     // side /|
-    -0.5f, -0.5f, 0.5f,
-    0.5f, -0.5f, 0.5f,
-    -0.5f, 0.5f, 0.5f,
+    -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+    0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
+    -0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
 
     // back
-    -0.5f, -0.5f, -0.5f,
-    -0.5f, 0.5f, -0.5f,
-    -0.5f, 0.5f, 0.5f,
-    -0.5f, 0.5f, 0.5f,
-    -0.5f, -0.5f, 0.5f,
-    -0.5f, -0.5f, -0.5f,
+    -0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
+    -0.5f, 0.5f, -0.5f, 0.0f, 0.0f, 
+    -0.5f, 0.5f, 0.5f, 0.0f, 1.0f,
+    -0.5f, 0.5f, 0.5f, 0.0f, 1.0f,
+    -0.5f, -0.5f, 0.5f, 1.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
 
     // Front slant
-    -0.5f, 0.5f, -0.5f, 
-    -0.5f, 0.5f, 0.5f,
-    0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f, 0.5f,
-    -0.5f, 0.5f, 0.5f
+    -0.5f, 0.5f, -0.5f, 1.0f, 0.0f,
+    -0.5f, 0.5f, 0.5f, 0.0f, 0.0f,
+    0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+    0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 
+    0.5f, -0.5f, 0.5f, 1.0f, 1.0f,
+    -0.5f, 0.5f, 0.5f, 1.0f, 0.0f
 };
 
 SimpleRender::SimpleRender(Shader &shader)
@@ -140,8 +144,8 @@ void SimpleRender::Draw3D(Shape shape, glm::vec3 position, glm::vec3 size, Textu
 
     // Matrix multiplication are in reverse order:
     // 1. scale, 2. rotate, 3. translate
-    model = glm::scale(model, size);
     model = glm::translate(model, glm::vec3(position.x, position.y, position.z));
+    model = glm::scale(model, size);
     // model = glm::scale(model, size);
     // model = glm::rotate(model, glm::radians(position.x), glm::vec3(1.0f, 0.3f, 0.5f));
 

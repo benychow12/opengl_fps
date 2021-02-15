@@ -1,0 +1,48 @@
+peepogpog wow
+Position is...00.50
+WorldUp is...010
+PITCH is...0
+YAW is...-90
+FRONT is...00-1
+UP is...000
+RIGHT is...000
+FRONT is...-4.37114e-080-1
+UP is...010
+RIGHT is...10-4.37114e-08
+Game init
+vshaderstream...
+#version 330 core
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec2 aTexCoord;
+
+out vec2 TexCoord;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+void main()
+{
+    gl_Position = projection * view * model * vec4(aPos, 1.0);
+    TexCoord = aTexCoord;
+}
+
+fshaderstream...
+#version 330 core
+out vec4 FragColor;
+in vec2 TexCoord;
+
+uniform sampler2D texture1;
+
+void main()
+{
+    FragColor = texture(texture1, TexCoord);
+}
+
+Vertex Shader...
+Done
+Fragment Shader...
+Done
+Creating Shader Program...
+Done
+First mouse

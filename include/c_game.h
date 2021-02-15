@@ -30,6 +30,7 @@ public:
     // game state
     Gamestate State;
     bool Keys[1024];
+    bool Mouse[5];
     unsigned int Width, Height;
     // camera
     float cam_lastX, cam_lastY, cam_xoffset, cam_yoffset;

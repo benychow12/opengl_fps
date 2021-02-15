@@ -1,4 +1,7 @@
 #include "c_camera.h"
+// Debug
+#include <iostream>
+#include <glm/gtx/string_cast.hpp>
 
 // default camera values
 const float YAW = -90.0f;
@@ -12,7 +15,19 @@ Camera::Camera(glm::vec3 position, glm::vec3 up) :
     Position = position;
     WorldUp = up;
     no_clip = false;
+    // Debug
+    std::cout << "peepogpog wow" << std::endl;
+    std::cout << "Position is..." << Position.x << Position.y << Position.z << std::endl;
+    std::cout << "WorldUp is..." << WorldUp.x << WorldUp.y << WorldUp.z << std::endl;
+    std::cout << "PITCH is..." << Pitch  << std::endl;
+    std::cout << "YAW is..." << Yaw << std::endl;
+    std::cout << "FRONT is..." << this->Front.x << this->Front.y << this->Front.z << std::endl;
+    std::cout << "UP is..." << this->Up.x << this->Up.y << this->Up.z << std::endl;
+    std::cout << "RIGHT is..." << this->Right.x << this->Right.y << this->Right.z << std::endl;
     UpdateCameraVectors();
+    std::cout << "FRONT is..." << this->Front.x << this->Front.y << this->Front.z << std::endl;
+    std::cout << "UP is..." << this->Up.x << this->Up.y << this->Up.z << std::endl;
+    std::cout << "RIGHT is..." << this->Right.x << this->Right.y << this->Right.z << std::endl;
 }
 
 Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch)
@@ -34,6 +49,11 @@ glm::mat4 Camera::GetViewMatrix()
 glm::vec3 Camera::GetPosition()
 {
     return this->Position;
+}
+
+glm::vec3 Camera::GetFront()
+{
+    return this->Front;
 }
 
 void Camera::ProcessKeyboardCamera(Camera_Movement direction, float deltaTime)
@@ -122,13 +142,34 @@ void Camera::UpdateCameraVectors()
     front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
     front.y = sin(glm::radians(Pitch));
     front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
-    Front = glm::normalize(front);
-
+    this->Front = glm::normalize(front);
+    
+    // Debug
+    if (this->Front == glm::vec3(0.0f, 0.0f, 0.0f))
+    {
+        std::cout << "YO X THIS CAMERA IS BORKEN" << std::endl;
+    }
+    if (this->Up == glm::vec3(0.0f, 0.0f, 0.0f))
+    {
+        std::cout << "YO X THIS CAMERA IS BORKEN" << std::endl;
+    }
+    if (this->Right == glm::vec3(0.0f, 0.0f, 0.0f))
+    {
+        std::cout << "YO X THIS CAMERA IS BORKEN" << std::endl;
+    }
     // Also re-calculate the right and up vector
     // Lengths closer to 0 the more you look up or down which results
     // in slower movement
-    Right = glm::normalize(glm::cross(Front, WorldUp));
-    Up = glm::normalize(glm::cross(Right, Front));
+    this->Right = glm::normalize(glm::cross(Front, WorldUp));
+    this->Up = glm::normalize(glm::cross(Right, Front));
+    if (this->Up == glm::vec3(0.0f, 0.0f, 0.0f))
+    {
+        std::cout << "YO X THIS CAMERA IS BORKEN" << std::endl;
+    }
+    if (this->Right == glm::vec3(0.0f, 0.0f, 0.0f))
+    {
+        std::cout << "YO X THIS CAMERA IS BORKEN" << std::endl;
+    }
 }
 
 void Camera::no_clip_toggle()
