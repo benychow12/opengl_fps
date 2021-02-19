@@ -177,6 +177,33 @@ src/c_camera.cpp.s:
 	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_camera.cpp.s
 .PHONY : src/c_camera.cpp.s
 
+src/c_colmanager.o: src/c_colmanager.cpp.o
+
+.PHONY : src/c_colmanager.o
+
+# target to build an object file
+src/c_colmanager.cpp.o:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_colmanager.cpp.o
+.PHONY : src/c_colmanager.cpp.o
+
+src/c_colmanager.i: src/c_colmanager.cpp.i
+
+.PHONY : src/c_colmanager.i
+
+# target to preprocess a source file
+src/c_colmanager.cpp.i:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_colmanager.cpp.i
+.PHONY : src/c_colmanager.cpp.i
+
+src/c_colmanager.s: src/c_colmanager.cpp.s
+
+.PHONY : src/c_colmanager.s
+
+# target to generate assembly for a file
+src/c_colmanager.cpp.s:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_colmanager.cpp.s
+.PHONY : src/c_colmanager.cpp.s
+
 src/c_game.o: src/c_game.cpp.o
 
 .PHONY : src/c_game.o
@@ -312,6 +339,33 @@ src/c_shader.cpp.s:
 	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_shader.cpp.s
 .PHONY : src/c_shader.cpp.s
 
+src/c_sprite.o: src/c_sprite.cpp.o
+
+.PHONY : src/c_sprite.o
+
+# target to build an object file
+src/c_sprite.cpp.o:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_sprite.cpp.o
+.PHONY : src/c_sprite.cpp.o
+
+src/c_sprite.i: src/c_sprite.cpp.i
+
+.PHONY : src/c_sprite.i
+
+# target to preprocess a source file
+src/c_sprite.cpp.i:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_sprite.cpp.i
+.PHONY : src/c_sprite.cpp.i
+
+src/c_sprite.s: src/c_sprite.cpp.s
+
+.PHONY : src/c_sprite.s
+
+# target to generate assembly for a file
+src/c_sprite.cpp.s:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_sprite.cpp.s
+.PHONY : src/c_sprite.cpp.s
+
 src/c_texture.o: src/c_texture.cpp.o
 
 .PHONY : src/c_texture.o
@@ -408,6 +462,9 @@ help:
 	@echo "... src/c_camera.o"
 	@echo "... src/c_camera.i"
 	@echo "... src/c_camera.s"
+	@echo "... src/c_colmanager.o"
+	@echo "... src/c_colmanager.i"
+	@echo "... src/c_colmanager.s"
 	@echo "... src/c_game.o"
 	@echo "... src/c_game.i"
 	@echo "... src/c_game.s"
@@ -423,6 +480,9 @@ help:
 	@echo "... src/c_shader.o"
 	@echo "... src/c_shader.i"
 	@echo "... src/c_shader.s"
+	@echo "... src/c_sprite.o"
+	@echo "... src/c_sprite.i"
+	@echo "... src/c_sprite.s"
 	@echo "... src/c_texture.o"
 	@echo "... src/c_texture.i"
 	@echo "... src/c_texture.s"

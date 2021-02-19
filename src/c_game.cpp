@@ -6,6 +6,8 @@
 #include "c_camera.h"
 #include "c_gameobject.h"
 #include "c_playerobject.h"
+#include "c_colmanager.h"
+#include "c_sprite.h"
 
 #include "glm/gtx/string_cast.hpp"
 
@@ -14,6 +16,7 @@
 
 // Game-related state data
 SimpleRender *Renderer;
+SpriteRenderer* TwoDRenderer;
 PlayerObject *Player;
 
 // debug object
@@ -21,8 +24,6 @@ std::vector<GameObject*> bloobloo;
 std::vector<PlayerObject*> PlayerObjs;
 GameObject *bloo;
 GameObject *bloo2;
-bool CheckCollision(GameObject &one, GameObject &two);
-bool CheckRaycast(glm::vec3 origin_position, glm::vec3 origin_dir, GameObject &two);
 
 Camera PlayerCamera(glm::vec3(5.0f, 0.5f, 5.0f));
 
@@ -38,7 +39,7 @@ Game::~Game()
 {
     delete Renderer;
     delete Player;
-
+    delete TwoDRenderer;
 }
 
 void Game::Init()
@@ -49,7 +50,13 @@ void Game::Init()
     ResourceManager::LoadShader("shaders/s_vertex.vs", "shaders/s_fragment.fs", nullptr, "shader_main");
     ResourceManager::GetShader("shader_main").Use();
 
+    ResourceManager::LoadShader("shaders/s_sprite.vs", "shaders/s_sprite.fs", nullptr, "shader_sprite");
+    ResourceManager::GetShader("shader_sprite").Use();
+
     // configure the shaders
+    glm::mat4 td_projection = glm::ortho(0.0f, static_cast<float>(this->Width), static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
+    ResourceManager::GetShader("shader_sprite").SetMatrix4("projection", td_projection);
+
     glEnable(GL_DEPTH_TEST);
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -57,18 +64,23 @@ void Game::Init()
     // set render-specific controls
     Renderer = new SimpleRender(ResourceManager::GetShader("shader_main"));
 
+    TwoDRenderer = new SpriteRenderer(ResourceManager::GetShader("shader_sprite"));
+
     // DEBUG - should probably offload this a bit more
     // load textures
     ResourceManager::LoadTexture("assets/source.png", true, "def_placeholder");
     ResourceManager::LoadTexture("assets/tile066.png", true, "floor_tile");
+    ResourceManager::LoadTexture("assets/shotgun.png", true, "player_shotgun");
 
     // Configure game objects
     Player = new PlayerObject(PlayerCamera.GetPosition(), glm::vec3(0.2f, 0.2f, 0.2f), PlayerCamera.GetFront());
     bloo = new  GameObject(glm::vec3(5.0f, 0.5f, 1.0f), glm::vec3(1.0f), ResourceManager::GetTexture("def_placeholder"), true);
     bloo2 = new GameObject(glm::vec3(0.0f, -0.5f, 0.0f), glm::vec3(100.0f, 0.5f, 100.0f), ResourceManager::GetTexture("floor_tile"), true);
+    GameObject *bloo3 = new GameObject(glm::vec3(1.0f, 0.5f, -1.0f), glm::vec3(1.0f), ResourceManager::GetTexture("floor_tile"), true);
     // DEBUG
     bloobloo.push_back(bloo);
     bloobloo.push_back(bloo2);
+    bloobloo.push_back(bloo3);
 }
 
 void Game::ProcessInput(float dt)
@@ -108,7 +120,7 @@ void Game::ProcessInput(float dt)
             std::cout << "left click" << std::endl;
             this->Mouse[GLFW_MOUSE_BUTTON_LEFT] = false;
             Player->player_action_shoot();
-            CheckRaycast(PlayerCamera.GetPosition(), PlayerCamera.GetFront(), *bloo); 
+            CollisionManager::CheckRaycastObject(PlayerCamera.GetPosition(), PlayerCamera.GetFront(), 100, *bloo); 
 
             PlayerObject *bullet = new PlayerObject(PlayerCamera.GetPosition(), glm::vec3(0.01f), PlayerCamera.GetFront(), ResourceManager::GetTexture("def_placeholder"));
             PlayerObjs.push_back(bullet);
@@ -141,7 +153,7 @@ void Game::Update(float dt)
     Player->Position = PlayerCamera.Position;
     for (auto &object : bloobloo)
     {
-        if (CheckCollision(*Player, *object))
+        if (CollisionManager::CheckAABB(*Player, *object))
         {
             PlayerCamera.Position = CurrentPos;
             Player->Position = CurrentPos;
@@ -176,59 +188,7 @@ void Game::Render(float dt)
         object->Draw(*Renderer);
     }
     // Renderer->Draw3D(Triangle, glm::vec3(2.0f, 0.5f, 2.0f), glm::vec3(1.0f), ResourceManager::GetTexture("def_placeholder"));
-}
-
-// Simple AABB check for collision, return true/false
-// Check right side of first object greater than left side of second object
-// and if second object right greater than first left
-// Since scaling is done uhh from the center it will be size/2
-bool CheckCollision(GameObject &one, GameObject &two)
-{
-    bool collision_detect = true;
-
-    if (one.IsSolid && two.IsSolid)
-    {
-        // For xyz axis collision check
-        for (int i = 0; i < 3; ++i)
-        {
-            // define top left position
-            float one_top_left = one.Position[i] - one.Size[i] / 2.0f;
-            float two_top_left = two.Position[i] - two.Size[i] / 2.0f;
-
-            collision_detect &= one_top_left + one.Size[i] >= two_top_left && two_top_left + two.Size[i] >= one_top_left;
-        }
-
-        if (collision_detect)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-// Raycast from origin location and see if it hits object
-bool CheckRaycast(glm::vec3 origin_position, glm::vec3 origin_dir, GameObject &one)
-{
-    // for some arbitrary unit of travel
-    for(float c; c < 50; c++)
-    {
-        // Point vs AABB collision
-        bool collision_detect = (origin_position.x >= one.Position.x - one.Size.x / 2.0f && origin_position.x <= one.Position.x + one.Size.x / 2.0f)
-            && (origin_position.y >= one.Position.y - one.Size.y / 2.0f && origin_position.y <= one.Position.y + one.Size.y / 2.0f)
-            && (origin_position.z >= one.Position.z - one.Size.z / 2.0f && origin_position.z <= one.Position.z + one.Size.z / 2.0f);
-
-        if(collision_detect)
-        {
-            std::cout << "HIT!" << std::endl;
-            return true;
-        }
-        else // Update ray
-        {
-            origin_position += origin_dir;
-            std::cout << "Raycasting..." << glm::to_string(origin_position) << std::endl;
-        }
-    }
-    std::cout << "miss shot" << std::endl;
-    return false;
-
+    int texWidth = ResourceManager::GetTexture("player_shotgun").Width;
+    int texHeight = ResourceManager::GetTexture("player_shotgun").Height;
+    TwoDRenderer->DrawSprite(ResourceManager::GetTexture("player_shotgun"), glm::vec2((this->Width / 2) - 75, (this->Height - texHeight) - 20), glm::vec2(150.0f), 0.0f);
 }

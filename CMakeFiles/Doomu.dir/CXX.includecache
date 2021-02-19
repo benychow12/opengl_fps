@@ -21,6 +21,10 @@ c_gameobject.h
 /home/mayajama/Projects/openGL/doomu/src/c_gameobject.h
 c_playerobject.h
 /home/mayajama/Projects/openGL/doomu/src/c_playerobject.h
+c_colmanager.h
+/home/mayajama/Projects/openGL/doomu/src/c_colmanager.h
+c_sprite.h
+/home/mayajama/Projects/openGL/doomu/src/c_sprite.h
 glm/gtx/string_cast.hpp
 /home/mayajama/Projects/openGL/doomu/src/glm/gtx/string_cast.hpp
 vector
@@ -55,6 +59,12 @@ glm/gtc/matrix_transform.hpp
 -
 vector
 -
+
+include/c_colmanager.h
+c_gameobject.h
+include/c_gameobject.h
+GLFW/glfw3.h
+include/GLFW/glfw3.h
 
 include/c_game.h
 glad/glad.h
@@ -97,6 +107,18 @@ glm/glm.hpp
 -
 glm/gtc/type_ptr.hpp
 -
+
+include/c_sprite.h
+glad/glad.h
+-
+glm/glm.hpp
+include/glm/glm.hpp
+glm/gtc/matrix_transform.hpp
+include/glm/gtc/matrix_transform.hpp
+c_texture.h
+include/c_texture.h
+c_shader.h
+include/c_shader.h
 
 include/c_texture.h
 glad/glad.h

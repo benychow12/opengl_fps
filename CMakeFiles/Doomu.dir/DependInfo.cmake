@@ -16,11 +16,13 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/mayajama/Projects/openGL/doomu/src/c_3drender.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_3drender.cpp.o"
   "/home/mayajama/Projects/openGL/doomu/src/c_camera.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_camera.cpp.o"
+  "/home/mayajama/Projects/openGL/doomu/src/c_colmanager.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_colmanager.cpp.o"
   "/home/mayajama/Projects/openGL/doomu/src/c_game.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_game.cpp.o"
   "/home/mayajama/Projects/openGL/doomu/src/c_gameobject.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_gameobject.cpp.o"
   "/home/mayajama/Projects/openGL/doomu/src/c_playerobject.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_playerobject.cpp.o"
   "/home/mayajama/Projects/openGL/doomu/src/c_resmanager.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_resmanager.cpp.o"
   "/home/mayajama/Projects/openGL/doomu/src/c_shader.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_shader.cpp.o"
+  "/home/mayajama/Projects/openGL/doomu/src/c_sprite.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_sprite.cpp.o"
   "/home/mayajama/Projects/openGL/doomu/src/c_texture.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/c_texture.cpp.o"
   "/home/mayajama/Projects/openGL/doomu/src/main.cpp" "/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir/src/main.cpp.o"
   )

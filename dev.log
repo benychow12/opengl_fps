@@ -101,3 +101,12 @@ mechanic which used point vs aabb collision. Should probably move all the
 collision functions to a static class to clean up the game.cpp a little bit
 more
 
+2/15/2021
++ Moved the collision functions to a static class
+
+2/16/2021
+* Started adding in a 2d renderer
+
+2/18/2021
++ 2D renderer is implemented 
++ Rudimentary proof of concept for UI
