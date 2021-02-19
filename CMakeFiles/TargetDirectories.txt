@@ -1,3 +1,0 @@
-/home/mayajama/Projects/openGL/doomu/CMakeFiles/rebuild_cache.dir
-/home/mayajama/Projects/openGL/doomu/CMakeFiles/edit_cache.dir
-/home/mayajama/Projects/openGL/doomu/CMakeFiles/Doomu.dir
