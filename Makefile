@@ -204,6 +204,33 @@ src/c_colmanager.cpp.s:
 	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_colmanager.cpp.s
 .PHONY : src/c_colmanager.cpp.s
 
+src/c_enemyobject.o: src/c_enemyobject.cpp.o
+
+.PHONY : src/c_enemyobject.o
+
+# target to build an object file
+src/c_enemyobject.cpp.o:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_enemyobject.cpp.o
+.PHONY : src/c_enemyobject.cpp.o
+
+src/c_enemyobject.i: src/c_enemyobject.cpp.i
+
+.PHONY : src/c_enemyobject.i
+
+# target to preprocess a source file
+src/c_enemyobject.cpp.i:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_enemyobject.cpp.i
+.PHONY : src/c_enemyobject.cpp.i
+
+src/c_enemyobject.s: src/c_enemyobject.cpp.s
+
+.PHONY : src/c_enemyobject.s
+
+# target to generate assembly for a file
+src/c_enemyobject.cpp.s:
+	$(MAKE) -f CMakeFiles/Doomu.dir/build.make CMakeFiles/Doomu.dir/src/c_enemyobject.cpp.s
+.PHONY : src/c_enemyobject.cpp.s
+
 src/c_game.o: src/c_game.cpp.o
 
 .PHONY : src/c_game.o
@@ -465,6 +492,9 @@ help:
 	@echo "... src/c_colmanager.o"
 	@echo "... src/c_colmanager.i"
 	@echo "... src/c_colmanager.s"
+	@echo "... src/c_enemyobject.o"
+	@echo "... src/c_enemyobject.i"
+	@echo "... src/c_enemyobject.s"
 	@echo "... src/c_game.o"
 	@echo "... src/c_game.i"
 	@echo "... src/c_game.s"

@@ -6,6 +6,7 @@
 #include "c_camera.h"
 #include "c_gameobject.h"
 #include "c_playerobject.h"
+#include "c_enemyobject.h"
 #include "c_colmanager.h"
 #include "c_sprite.h"
 
@@ -21,7 +22,7 @@ PlayerObject *Player;
 
 // debug object
 std::vector<GameObject*> bloobloo;
-std::vector<PlayerObject*> PlayerObjs;
+std::vector<EnemyObject*> EnemyObjs;
 GameObject *bloo;
 GameObject *bloo2;
 
@@ -71,16 +72,21 @@ void Game::Init()
     ResourceManager::LoadTexture("assets/source.png", true, "def_placeholder");
     ResourceManager::LoadTexture("assets/tile066.png", true, "floor_tile");
     ResourceManager::LoadTexture("assets/shotgun.png", true, "player_shotgun");
+    ResourceManager::LoadTexture("assets/enemy_1.png", true, "enemy_1");
 
     // Configure game objects
     Player = new PlayerObject(PlayerCamera.GetPosition(), glm::vec3(0.2f, 0.2f, 0.2f), PlayerCamera.GetFront());
     bloo = new  GameObject(glm::vec3(5.0f, 0.5f, 1.0f), glm::vec3(1.0f), ResourceManager::GetTexture("def_placeholder"), true);
     bloo2 = new GameObject(glm::vec3(0.0f, -0.5f, 0.0f), glm::vec3(100.0f, 0.5f, 100.0f), ResourceManager::GetTexture("floor_tile"), true);
-    GameObject *bloo3 = new GameObject(glm::vec3(1.0f, 0.5f, -1.0f), glm::vec3(1.0f), ResourceManager::GetTexture("floor_tile"), true);
+    EnemyObject *enemy_1 = new EnemyObject(glm::vec3(1.0f, 0.5, -1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 100, ResourceManager::GetTexture("enemy_1"));
+    EnemyObject *enemy_2 = new EnemyObject(glm::vec3(2.0f, 0.5, -1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 100, ResourceManager::GetTexture("enemy_1"));
+    EnemyObject *enemy_3 = new EnemyObject(glm::vec3(4.0f, 0.5, -1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 100, ResourceManager::GetTexture("enemy_1"));
     // DEBUG
     bloobloo.push_back(bloo);
     bloobloo.push_back(bloo2);
-    bloobloo.push_back(bloo3);
+    EnemyObjs.push_back(enemy_1);
+    EnemyObjs.push_back(enemy_2);
+    EnemyObjs.push_back(enemy_3);
 }
 
 void Game::ProcessInput(float dt)
@@ -120,12 +126,24 @@ void Game::ProcessInput(float dt)
             std::cout << "left click" << std::endl;
             this->Mouse[GLFW_MOUSE_BUTTON_LEFT] = false;
             Player->player_action_shoot();
-            CollisionManager::CheckRaycastObject(PlayerCamera.GetPosition(), PlayerCamera.GetFront(), 100, *bloo); 
 
-            PlayerObject *bullet = new PlayerObject(PlayerCamera.GetPosition(), glm::vec3(0.01f), PlayerCamera.GetFront(), ResourceManager::GetTexture("def_placeholder"));
-            PlayerObjs.push_back(bullet);
+            // prob want some smaller vector of only objects near player
+            for (int i = 0; i < EnemyObjs.size(); ++i)
+            {
+                bool hit = CollisionManager::CheckRaycastObject(PlayerCamera.GetPosition(), PlayerCamera.GetFront(), 1000, *EnemyObjs[i]);
+                if (hit)
+                {
+                    EnemyObjs[i]->UpdateHealth(100);
+                    if (EnemyObjs[i]->State == ENEMY_DEAD)
+                    {
+                        std::cout << "deleting object" << std::endl;
+                        delete EnemyObjs[i];
+                        EnemyObjs.erase(EnemyObjs.begin() + i);
+                    }
+                }
 
 
+            }
         }
         if (this->Mouse[GLFW_MOUSE_BUTTON_RIGHT])
         {
@@ -159,13 +177,6 @@ void Game::Update(float dt)
             Player->Position = CurrentPos;
         }
     }
-
-    // Debug
-    // silly bullet
-    for (auto &object : PlayerObjs)
-    {
-        object->Position += object->player_direction * 0.1f;
-    }
 }
 
 void Game::Render(float dt)
@@ -183,7 +194,7 @@ void Game::Render(float dt)
     {
         object->Draw(*Renderer);
     }
-    for (auto &object : PlayerObjs)
+    for (auto &object : EnemyObjs)
     {
         object->Draw(*Renderer);
     }

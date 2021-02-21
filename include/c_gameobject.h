@@ -18,6 +18,7 @@ public:
 
     GameObject();
     GameObject(glm::vec3 pos, glm::vec3 size, Texture2D texture, bool solid);
+    ~GameObject();
 
     Texture2D Texture;
 
