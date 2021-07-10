@@ -211,6 +211,8 @@ void Game::Render(float dt)
 
     // It looks like the calculations are correct just uggghhhh!!!
 
+    // enemy_bill->model_view_matrix = glm::rotate(enemy_bill->model_view_matrix, angleCosine, upAux);
+    glm::mat4 penis = enemy_bill->model_view_matrix;
 
     // move object closer
     // glm::vec3 move_vec = enemy_bill->Direction * 0.01f;
@@ -220,7 +222,7 @@ void Game::Render(float dt)
 
     // enemy_bill->UpdateModelMatrix(glm::scale(enemy_bill->model_view_matrix, glm::vec3(1.0f)));
     // we rotated the model view matrix, but how do we pull the direction
-    enemy_bill->UpdateDir(Player->Position, angleCosine_deg, upAux);
+    enemy_bill->UpdateDir(0.01f * obj2cam, angleCosine_deg, upAux);
     /*
     enemy_bill->UpdateModelMatrix(glm::translate(enemy_bill->model_view_matrix, glm::vec3(0.0f, 0.0f, -0.5f)));
     enemy_bill->UpdateModelMatrix(glm::rotate(enemy_bill->model_view_matrix, glm::radians(angleCosine_deg), upAux));

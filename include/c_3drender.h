@@ -22,14 +22,16 @@ public:
 
     // mat4 for view for render
     glm::mat4 render_view;
+    glm::mat4 render_projection;
     // Renders a defined 3d object
-    void Draw3D(Shape shape, glm::vec3 position, glm::vec3 size, Texture2D &texture);
+    void Draw3D(Shape shape, glm::vec3 position, glm::vec3 direction, glm::vec3 size, Texture2D &texture);
+
+    void DrawBillboard(glm::mat4 matrix_model_view, Texture2D &texture);
 
 private:
     // Render state
     Shader shader;
     unsigned int quadVAO;
-    glm::mat4 render_projection;
 
     // Init and config quad's buffer and vertex attrib
     void initRenderData();

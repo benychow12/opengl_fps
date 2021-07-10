@@ -21,5 +21,8 @@ public:
     EnemyObject(glm::vec3 pos, glm::vec3 size, glm::vec3 dir, int health, Texture2D texture);
 
     void UpdateHealth(int damage);
+    void UpdateDir(glm::vec3 direction, float angle, glm::vec3 upVec);
+
+    void Draw(SimpleRender &renderer);
 };
 #endif

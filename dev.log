@@ -110,3 +110,18 @@ more
 2/18/2021
 + 2D renderer is implemented 
 + Rudimentary proof of concept for UI
+
+2/20/21
++ Enemy class and shooting to kill done
+
+2/26/21
+* Trying to fix the billboarding of enemyobjects. I suspect if I save the model
+* matrix maybe it'll make the rotating more consistent?
+
+3/9/21
++ Some rudimentary code for enemys facing direction and moving towards player
+
+7/9/21
+- Oof that was a done of damage. Lost all motivation after she left. Next time
+  I should probably limit the scope a bit more and laser focus on steps I want
+  to accomplish. Basically better planning...
